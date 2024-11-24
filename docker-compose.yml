@@ -1,0 +1,18 @@
+version: '3'
+services:
+  chums:
+    image: node:14
+    working_dir: /app
+    volumes:
+      - config:/config
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    command: >
+      bash -c "npm install &&
+               npm run postinstall &&
+               npm start"
+
+volumes:
+  config:
